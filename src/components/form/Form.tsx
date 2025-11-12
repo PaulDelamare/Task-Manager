@@ -1,24 +1,43 @@
 import React, { useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-const Form = ({ children, serverError, handleSubmit, onSubmit }: { children: React.ReactNode, serverError: string | null, handleSubmit: any, onSubmit: any }) => {
-
+const Form = ({
+    children,
+    serverError,
+    handleSubmit,
+    onSubmit,
+    title = 'Se connecter'
+}: {
+    children: React.ReactNode;
+    serverError: string | null;
+    handleSubmit: any;
+    onSubmit: any;
+    title?: string;
+}) => {
     useEffect(() => {
-
         if (serverError) {
             toast.error(serverError);
         }
     }, [serverError]);
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md bg-white p-6 rounded shadow flex flex-col gap-2 items-center">
-            <h2 className="text-xl font-bold mb-4">Se connecter</h2>
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="w-full max-w-md bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-lg flex flex-col gap-4 items-stretch"
+        >
+            <h2 className="w-full text-xl font-semibold text-center pb-2 border-b border-gray-200 dark:border-gray-700">
+                {title}
+            </h2>
 
-            {children}
+            <div className="w-full flex flex-col gap-3">{children}</div>
 
-            {serverError && <div className="text-red-600 mb-3 text-center">{serverError}*</div>}
+            {serverError && (
+                <div className="text-red-600 text-center text-sm font-medium">
+                    {serverError}*
+                </div>
+            )}
         </form>
-    )
-}
+    );
+};
 
-export default Form
+export default Form;
