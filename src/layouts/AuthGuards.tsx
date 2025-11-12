@@ -7,8 +7,6 @@ const AuthGuards = ({ children }: { children: React.ReactNode }) => {
 
     const { token } = useAuth();
 
-    console.log("AuthGuards token:", token);
-
     if (!token) {
         return <Navigate to='/login' replace />;
     }

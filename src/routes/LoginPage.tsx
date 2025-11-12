@@ -28,7 +28,7 @@ export default function LoginPage() {
             (data: LoginFormData) => authService.login(data),
 
             (res: { token: string, user: { name: string } }) => {
-                console.log('Login réussi :', res);
+                console.info('Login réussi :', res);
 
                 toast.success('Connexion réussie !');
                 setToken(res.token);

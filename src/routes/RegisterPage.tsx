@@ -28,7 +28,7 @@ export default function RegisterPage() {
             (data: RegisterFormData) => authService.register(data),
 
             (res) => {
-                console.log('Inscription réussie :', res);
+                console.info('Inscription réussie :', res);
 
                 toast.success('Inscription réussie !');
                 navigate('/login');
