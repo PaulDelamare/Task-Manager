@@ -7,6 +7,7 @@ import LoginPage from './routes/LoginPage'
 import { ToastContainer } from 'react-toastify';
 import RegisterPage from './routes/RegisterPage'
 import UnAuthGuards from './layouts/UnAuthGuards'
+import TasksPage from './routes/TasksPage'
 
 function App() {
 
@@ -14,8 +15,9 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<MainPage />} />
-        <Route path='/login' element={<AuthGuards><LoginPage /></AuthGuards>} />
-        <Route path='/register' element={<AuthGuards><RegisterPage /></AuthGuards>} />
+        <Route path='/login' element={<UnAuthGuards><LoginPage /></UnAuthGuards>} />
+        <Route path='/register' element={<UnAuthGuards><RegisterPage /></UnAuthGuards>} />
+        <Route path='/tasks' element={<AuthGuards><TasksPage /></AuthGuards>} />
       </Routes>
       <ToastContainer />
     </>

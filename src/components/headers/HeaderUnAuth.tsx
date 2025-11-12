@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom'
-import ThemeToggle from '../theme/ThemeToggle'
 
 const HeaderUnAuth = () => {
     const { pathname } = useLocation()
@@ -8,7 +7,7 @@ const HeaderUnAuth = () => {
         const base = 'px-3 py-2 rounded transition text-sm font-medium'
         const active = 'bg-white text-gray-900 dark:bg-gray-700 dark:text-white shadow'
         const inactive =
-            'text-gray-700 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-700/70'
+            'text-gray-700 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-300'
         return `${base} ${pathname === path ? active : inactive}`
     }
 
@@ -23,10 +22,6 @@ const HeaderUnAuth = () => {
                         Inscription
                     </Link>
                 </nav>
-
-                <div className="flex items-center gap-2">
-                    <ThemeToggle />
-                </div>
             </div>
         </header>
     )
