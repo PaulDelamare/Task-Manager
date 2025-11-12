@@ -16,7 +16,7 @@ interface LoginFormData {
 
 export default function LoginPage() {
 
-    const { setToken } = useAuth();
+    const { setToken, setName } = useAuth();
     const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
@@ -27,11 +27,13 @@ export default function LoginPage() {
         useSubmit(
             (data: LoginFormData) => authService.login(data),
 
-            (res: { accessToken: string }) => {
+            (res: { token: string, user: { name: string } }) => {
                 console.log('Login réussi :', res);
 
                 toast.success('Connexion réussie !');
-                setToken(res.accessToken);
+                console.log(res.token)
+                setToken(res.token);
+                setName(res.user.name);
                 navigate('/tasks');
             }
         );

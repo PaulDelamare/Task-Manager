@@ -3,7 +3,7 @@ import { AuthContext } from "./authContext";
 import { api } from "../../api/client";
 import { authService } from "../../api/auth";
 
-const STORAGE_KEY = "accessToken";
+const STORAGE_KEY = "token";
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
@@ -18,6 +18,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     });
 
+    const [name, setName] = useState<string>("");
+
     const setToken = useCallback((t: string | null) => {
 
         setTokenState(t);
@@ -25,10 +27,14 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
             if (t) localStorage.setItem(STORAGE_KEY, t);
             else localStorage.removeItem(STORAGE_KEY);
-            
+
         } catch {
             // ignore
         }
+    }, []);
+
+    const setNameCallback = useCallback((n: string) => {
+        setName(n);
     }, []);
 
     useEffect(() => {
@@ -75,10 +81,11 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const logout = useCallback(() => {
         setToken(null);
-    }, [setToken]);
+        setNameCallback("");
+    }, [setToken, setNameCallback]);
 
     return (
-        <AuthContext.Provider value={{ token, setToken, logout }}>
+        <AuthContext.Provider value={{ token, setToken, logout, name, setName: setNameCallback }}>
             {children}
         </AuthContext.Provider>
     );

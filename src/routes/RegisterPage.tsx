@@ -27,7 +27,7 @@ export default function RegisterPage() {
         useSubmit(
             (data: RegisterFormData) => authService.register(data),
 
-            (res: { accessToken: string }) => {
+            (res) => {
                 console.log('Inscription réussie :', res);
 
                 toast.success('Inscription réussie !');

@@ -4,10 +4,14 @@ export const AuthContext = createContext<{
     token: string | null;
     setToken: (token: string | null) => void;
     logout: () => void;
+    name: string | null;
+    setName: (name: string) => void;
 }>({
     token: null,
     setToken: () => { },
     logout: () => {},
+    name: null,
+    setName: () => {},
 });
 
 export const useAuth = () => {
