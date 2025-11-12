@@ -9,6 +9,7 @@ const AddTaskButton = ({ onAdd, isSubmitting, serverError }: { onAdd: (p: { titl
     return (
         <div className="w-full">
             {!open ? (
+
                 <button
                     onClick={() => setOpen(true)}
                     className="w-full px-4 py-2 rounded border-dashed border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition flex gap-2 items-center"
@@ -16,7 +17,9 @@ const AddTaskButton = ({ onAdd, isSubmitting, serverError }: { onAdd: (p: { titl
                 >
                     <PlusSvg className='w-4 fill-white' /> Ajouter une tâche
                 </button>
+
             ) : (
+
                 <div className="bg-white dark:bg-gray-800 p-3 rounded shadow-sm">
                     <TaskForm
                         onSubmit={(p) => {
@@ -31,6 +34,7 @@ const AddTaskButton = ({ onAdd, isSubmitting, serverError }: { onAdd: (p: { titl
                         <button onClick={() => setOpen(false)} className="text-sm text-gray-500 hover:underline">Annuler</button>
                     </div>
                 </div>
+
             )}
         </div>
     );
