@@ -1,17 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import type { Task } from '../../models/task.model';
 import PenSvg from '../svg/PenSvg';
 import TrashSvg from '../svg/TrashSvg';
 import Checkbox from '../form/checkbox/Checkbox';
 
-type Props = {
+const TaskItem = ({ task, onToggle, onEdit, onDelete }: {
     task: Task;
     onToggle: (t: Task) => void;
     onEdit: (t: Task) => void;
     onDelete?: (id: number) => void;
-};
+}) => {
 
-const TaskItem: React.FC<Props> = ({ task, onToggle, onEdit, onDelete }) => {
     const [editing, setEditing] = useState(false);
     const [title, setTitle] = useState(task.title);
     const ref = useRef<HTMLInputElement | null>(null);
@@ -26,12 +25,16 @@ const TaskItem: React.FC<Props> = ({ task, onToggle, onEdit, onDelete }) => {
 
     const save = () => {
         const t = title.trim();
+
         if (!t) {
+
             setTitle(task.title);
             setEditing(false);
             return;
         }
+
         if (t !== task.title) onEdit({ ...task, title: t });
+
         setEditing(false);
     };
 
@@ -41,16 +44,10 @@ const TaskItem: React.FC<Props> = ({ task, onToggle, onEdit, onDelete }) => {
 
             <label className="flex items-center">
 
-                {/* <input
-                    aria-label={`toggle-${task.id}`}
-                    type="checkbox"
-                    checked={task.completed}
-                    onChange={() => onToggle(task)}
-                    className="w-6 h-6 rounded border-gray-300 dark:border-gray-600"
-                /> */}
                 <Checkbox checked={task.completed}
                     onChange={() => onToggle(task)}
                     aria-label={`toggle-${task.id}`} />
+
             </label>
 
             <div className='w-full'>

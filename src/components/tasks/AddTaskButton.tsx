@@ -29,10 +29,9 @@ const AddTaskButton = ({ onAdd, isSubmitting, serverError }: { onAdd: (p: { titl
                         submitLabel="Ajouter"
                         isSubmitting={isSubmitting}
                         serverError={serverError}
+                        cancel={() => setOpen(false)}
+
                     />
-                    <div className="text-right mt-2">
-                        <button onClick={() => setOpen(false)} className="text-sm text-gray-500 hover:underline">Annuler</button>
-                    </div>
                 </div>
 
             )}
