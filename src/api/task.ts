@@ -1,3 +1,4 @@
+import type { Task } from "../models/task.model";
 import { api } from "./client";
 
 export class TaskService {
@@ -22,7 +23,7 @@ export class TaskService {
     /**
      * Permet de créer une nouvelle tâche pour l'utilisateur authentifié.
      */
-    async createTask(data: { title: string }) {
+    async createTask(data: { title: string }) : Promise<Task> {
         const res = await this.api.post('/api/tasks', data);
         return res.data;
     }
