@@ -31,7 +31,6 @@ export default function LoginPage() {
                 console.log('Login réussi :', res);
 
                 toast.success('Connexion réussie !');
-                console.log(res.token)
                 setToken(res.token);
                 setName(res.user.name);
                 navigate('/tasks');
