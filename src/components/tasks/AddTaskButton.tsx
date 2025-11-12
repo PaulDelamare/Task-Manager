@@ -4,6 +4,7 @@ import PlusSvg from '../svg/PlusSvg';
 
 
 const AddTaskButton = ({ onAdd, isSubmitting, serverError }: { onAdd: (p: { title: string }) => void, isSubmitting: boolean, serverError: string | null }) => {
+
     const [open, setOpen] = useState(false);
 
     return (

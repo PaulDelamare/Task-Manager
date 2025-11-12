@@ -26,6 +26,7 @@ const TaskForm = ({ initial = { title: '' }, onSubmit, submitLabel = 'Ajouter', 
         <form onSubmit={handle} className="flex flex-col">
             <div className='flex flex-col '>
                 <div className="flex gap-2 w-full flex-col sm:flex-row">
+
                     <input
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -33,6 +34,7 @@ const TaskForm = ({ initial = { title: '' }, onSubmit, submitLabel = 'Ajouter', 
                         className="flex-1 px-3 py-2 rounded border focus:outline-none focus:ring focus:border-blue-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                         disabled={isSubmitting}
                     />
+
                     <button
                         type="submit"
                         className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition disabled:opacity-50"
