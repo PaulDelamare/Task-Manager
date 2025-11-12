@@ -37,7 +37,7 @@ export default function RegisterPage() {
 
     return (
         <main className="flex items-center justify-center min-h-screen p-6">
-            <Form handleSubmit={handleSubmit} onSubmit={submit} serverError={serverError}>
+            <Form title="S'inscrire" handleSubmit={handleSubmit} onSubmit={submit} serverError={serverError}>
                 <Input label="Email" register={register} errors={errors} name="email" type="email" />
                 <Input label="Nom" register={register} errors={errors} name="name" type="text" />
                 <Input label="Mot de passe" register={register} errors={errors} name="password" type="password" />
