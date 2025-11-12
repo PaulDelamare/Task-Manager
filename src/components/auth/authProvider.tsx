@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useState, useCallback } from "react"
 import { AuthContext } from "./authContext";
 import { api } from "../../api/client";
 import { authService } from "../../api/auth";
+import { toast } from "react-toastify";
 
 const STORAGE_KEY = "token";
 
@@ -48,6 +49,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 await authService.fetchMe();
 
             } catch {
+
+                toast.error("Session expirée, veuillez vous reconnecter.");
 
                 setToken(null);
             }
