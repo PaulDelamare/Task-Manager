@@ -1,11 +1,13 @@
 import React from 'react'
 import { useAuth } from '../components/auth/authContext';
 import { Navigate } from 'react-router-dom';
-import HeaderUnAuth from '../components/headers/HeaderUnAuth';
+import HeaderAuth from '../components/headers/HeaderAuth';
 
 const AuthGuards = ({ children }: { children: React.ReactNode }) => {
 
     const { token } = useAuth();
+
+    console.log("AuthGuards token:", token);
 
     if (!token) {
         return <Navigate to='/login' replace />;
@@ -13,7 +15,7 @@ const AuthGuards = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <div>
-            <HeaderUnAuth />
+            <HeaderAuth />
             {children}
         </div>
     )
