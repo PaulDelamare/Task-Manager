@@ -12,7 +12,7 @@ const HeaderAuth = () => {
                         onClick={logout}
                         className="px-3 py-2 rounded transition text-sm font-medium bg-red-500 text-white hover:bg-red-600 cursor-pointer"
                     >
-                        Logout
+                        Déconnexion
                     </button>
                 </nav>
             </div>
